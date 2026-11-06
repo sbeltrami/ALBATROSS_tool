@@ -1,5 +1,15 @@
-# ALBATROSS_tool
-The code applies the teleconnection subsampling methodology to improve monthly rainfall forecasts at a 1 month lead time over West Africa during July. In this case, the lead time of 1 month means that the run is initialized in June.
+# ALBATROSS tool: teleconnection subsampling for July rainfall forecasts over West Africa
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sbeltrami/ALBATROSS_tool/HEAD?urlpath=%2Fdoc%2Ftree%2Fhybrid_method_june_1lead.ipynb)
+
+Interactive notebook that applies the teleconnection subsampling methodology to improve monthly rainfall forecasts over West Africa in July at 1-month lead time (forecasts initialized in June) during the period 1994-2016.
+
+## Launch the tool
+
+Click the **launch binder** badge above. No installation or account is needed.
+The first start can take 2-10 minutes while the environment is built; please be patient and keep the page open.
+
+## What the tool does
 
 With the teleconnection subsampling methodology a better knowledge of a teleconnection index is used to subsample members from a General Circulation Model (GCM) ensemble prediction of the teleconnection index. The subsample is then used to produce a hybrid precipitation prediction. The teleconnection considered is the one that mostly influences precipitation in the specific region and season considered.
 
@@ -8,6 +18,20 @@ For West Africa during July it is the Atlantic Niño that mostly impacts the rai
 The better knowledge of the ATL3 index is obtained through a Convolutional Neural Network (CNN), whose architecture and training/testing procedures are entirely based on the work of Bachèlery et al. (2025). The GCMs considered in this study are the seasonal forecasting systems from the Copernicus Climate Change Service (C3S), available online at the following link: https://cds.climate.copernicus.eu/datasets/seasonal-monthly-single-levels?tab=overview. In this study only the five European seasonal forecasting systems are considered (ECMWF, CMCC, UKMO, DWD, Météo-France), with their multi-model ensemble composed of 148 members.
 
 The observational dataset used as references are ORAS5 reanalysis for the Sea Surface Temperature (SST), which is the data used to test the CNN; CHIRPS-2.0, GPCP-2.3, ERA5 for the Total Precipitation Rate (TPR). Each observational dataset has been remapped onto the 1°x1° C3S's grid.
+
+## How to use it
+
+1. Open the notebook through the Binder link.
+2. Run the cells in order.
+3. To change the number of members of the subsample, edit the value of `size` (from 1 to 148)
+   in the cell marked `Insert the number (e.g., 52,71,...)`, then re-run that cell and the plotting cell below it.
+4. Cells computing the random subsampling are slow (several minutes). To speed them up, reduce `iterations` in the function `compute_acc_random_subsampling`.
+
+## Important notes
+
+- Changes made on Binder are **temporary**: they are lost when the session ends and do not modify this repository.
+- Sessions close after about 10 minutes of inactivity. If this happens, reopen the link.
+- To keep your own changes, download the notebook (*File → Download*) before closing.
 
 ## References
 Bachèlery, Marie-Lou, et al. "Predicting Atlantic and Benguela Niño events with deep learning." Science Advances 11.14 (2025): eads5185. DOI: 10.1126/sciadv.ads5185
