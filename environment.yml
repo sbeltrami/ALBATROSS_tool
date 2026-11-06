@@ -8,7 +8,7 @@ dependencies:
   - xarray=2025.4.0
   - matplotlib=3.10.3
   - xskillscore=0.0.26
-  - cartopy=0.24.1
+  - cartopy
   - shapely=2.1.1
   - dill=0.4.0
   - netcdf4
